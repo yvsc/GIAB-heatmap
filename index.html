@@ -77,6 +77,19 @@
       // Add the heatlayer to the map
       heat.addTo(map)
     })
+      var heatData = [
+    // [latitude, longitude, intensity]
+    [50.5, 30.5, 0.2],
+    [50.6, 30.4, 0.5],
+    // ... more data
+];
+
+var heatLayer = L.heatLayer(heatData, {
+    radius: 25,
+    // Optional: you can explicitly define the gradient here as well
+    // gradient: {0.4: 'blue', 0.6: 'cyan', 0.7: 'lime', 0.8: 'yellow', 1: 'red'} 
+}).addTo(map);
+
 <div style="
     position: fixed; 
     bottom: 50px; left: 50px; width: 150px; height: 90px; 
