@@ -77,7 +77,22 @@
       // Add the heatlayer to the map
       heat.addTo(map)
     })
+<div style="
+    position: fixed; 
+    bottom: 50px; left: 50px; width: 150px; height: 90px; 
+    background-color: white; border:2px solid grey; z-index:9999; font-size:14px;
+    ">
+    &nbsp; <b>Heatmap Intensity</b> <br>
+    &nbsp; <i>Low</i> &nbsp; <i style="background:#00FF00;">&nbsp;&nbsp;&nbsp;&nbsp;</i><br>
+    &nbsp; <i>Medium</i> &nbsp; <i style="background:#FFFF00;">&nbsp;&nbsp;&nbsp;&nbsp;</i><br>
+    &nbsp; <i>High</i> &nbsp; <i style="background:#FF0000;">&nbsp;&nbsp;&nbsp;&nbsp;</i><br>
+</div>
+'''
 
+m.get_root().html.add_child(folium.Element(legend_html))
+
+# Save map to HTML
+m.save('heatmap_with_legend.html')
     // Add custom attribution
     L.control.attribution({
       prefix: '<a href="https://github.com/HandsOnDataViz/leaflet-heatmap">View data and code</a> \
