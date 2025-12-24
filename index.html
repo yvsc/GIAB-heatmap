@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Garden In A Box Locations Northwest Colorado</title>
+  <title>GIAB Heatmap Steamboat</title>
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tachyons/4.11.1/tachyons.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.css">
@@ -16,17 +16,17 @@
 
   <script src="https://cdn.jsdelivr.net/npm/papaparse@5.3.0/papaparse.min.js"></script>
 
-</head>Garden In A Box Locations
+</head>
 
 <body class="helvetica">
 
   <div id="map" class="vh-100 vw-100 bg-near-white"></div>
 
   <div id="legend" class="bg-white fixed top-0 left-0 pa2 mt2 ml2 br1 o-90" style="z-index: 999; width: 380px">
-    <h1 class="f3 mt0"></h1>
+    <h1 class="f3 mt0">Garden In A Box Distributuion in Steamboat Springs, Colorado</h1>
 
     <p class="measure mb1">
-      This heatmap shows hotspots of Garden In A Box Sales 2025
+      This heatmap shows hotspots of Garden In A Box Sales in Northwest Colorado
     </p>
 
   </div>
@@ -35,8 +35,8 @@
 
     var map = L.map('map', {
       zoomControl: false, // Add zoom control separately below
-      center: [40.48, -0.106.83], // Initial map center
-      zoom: 12, // Initial zoom level
+      center: [40.49, -106.83], // Initial map center
+      zoom: 10, // Initial zoom level
       attributionControl: false, // Instead of default attribution, we add custom at the bottom of script
       scrollWheelZoom: false
     })
@@ -60,7 +60,7 @@
     }).addTo(map)
 
     // Read data from CSV file
-    $.get('./data.csv', function(csvString) {
+    $.get('./Untitled spreadsheet - Sheet2.csv', function(csvString) {
 
       // Use PapaParse to transform file into arrays
       var data = Papa.parse(csvString.trim()).data.filter(
@@ -71,7 +71,7 @@
 
       // Add all points into a heat layer
       var heat = L.heatLayer(data, {
-        radius: 12
+        radius: 25
       })
 
       // Add the heatlayer to the map
@@ -83,6 +83,23 @@
       prefix: '<a href="https://github.com/HandsOnDataViz/leaflet-heatmap">View data and code</a> \
         by <a href="https://handsondataviz.org" target="_blank">HandsOnDataViz</a>'
     }).addTo(map)
+
+    var info = L.control();
+
+	info.onAdd = function (map) {
+		this._div = L.DomUtil.create('div', 'info');
+		this.update();
+		return this._div;
+	};
+
+	info.update = function (props) {
+		this._div.innerHTML = '<center><h4>Garden In A Box</h4>';
+	};
+
+	info.addTo(mymap);
+
+    
+	  L.control.scale().addTo(mymap);
 
   </script>
 
