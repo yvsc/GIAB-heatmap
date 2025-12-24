@@ -60,7 +60,7 @@
     }).addTo(map)
 
     // Read data from CSV file
-    $.get('./Untitled spreadsheet - Sheet2.csv', function(csvString) {
+    $.get('./data.csv', function(csvString) {
 
       // Use PapaParse to transform file into arrays
       var data = Papa.parse(csvString.trim()).data.filter(
