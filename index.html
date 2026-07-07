@@ -60,7 +60,7 @@
     }).addTo(map)
 
     // Read data from CSV file
-    $.get('./data1.csv', function(csvString) {
+    $.get('./data.csv', function(csvString) {
 
       // Use PapaParse to transform file into arrays
       var data = Papa.parse(csvString.trim()).data.filter(
@@ -70,7 +70,7 @@
       })
 
       // Add all points into a heat layer
-      var heat = L.heatLayer(data1, {
+      var heat = L.heatLayer(data, {
         radius: 50
       })
 
